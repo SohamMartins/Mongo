@@ -1,0 +1,74 @@
+O mongo é um banco de dados não-relacional, ou seja, ele é no-sql; 
+
+Ele possui muitas funcionalidades que são extremamente úteis para o desenvolvedor; 
+Se quiser, é só acessar o mongo compass, que é uma ferramenta maravilhosa para desenvolver; 
+
+Dá para criar o banco de dados inteiro pelo mongo compass, mas irei fazer tudo por comandos à mão.
+
+
+Para se instalar o MongoDB, é só entrar no site deles e baixar o community server, após isso,
+pegue essa pasta  que foi instalada e a coloque no disco local C, depois crie uma paste neste
+com o nome de 'data', que será onde os arquivos do bando de dados irão ficar. 
+Nessa pasta data, crie uma outra pasta chamada 'db'; 
+
+Agora tu tem que adicionar o mongo no Path do windows 10. Tu terá que abrir a pasta 
+que você instalou e, dentro dessa pasta, terá uma outra pasta chamada 'bin', entre nela e copie 
+o diretório em que ela se encontra. No meu caso está assim: 
+
+	C:\MongoDB\mongodb-win32-x86_64-2012plus-4.2.7\bin
+
+Depois adicione ela no path do windows;
+É bem simples, conseguirás fazê-lo.
+
+Após a preparação do ambiente, deves rodar dois terminais, um para o server do mongo e o outro
+para rodar os comandos que iremos utilizar. Para o server, só iniciar com esse comando no cmd:
+
+	mongod
+
+Ele irá carregar automaticamente e ficará rodando, não feche a janela dele de jeito nenhum;
+
+Para abrir as linhas de comando do mongo, abra um novo cmd e digite: 
+
+	mongo
+
+Está pronto. Agora é só trabalhar. 
+
+
+Para trabalhar com o MongoDB junto com o NodeJS, iremos utilizar um módulo chamado 'mongoose';
+Poderíamos utilizar um chamado 'sequelize', só que ele é mais para banco de dados SQL. 
+
+Para instalar o mongoose no nosso projeto, é só dar o comando: 
+
+	npm install --save mongoose
+
+**lembrando sempre que tu tem que estar no diretório do projeto**
+
+Comandos no mongo: 
+
+	show databases; // vai mostrar todos os bancos de dados que existem
+	// por padrão ele irá retornar 3: admin, local e config
+
+	use nome_do_banco // para criar um banco
+	// também é usado para trocar de data bases
+
+	show collections; // mostra as collections que tem no banco
+
+	db.users.find() // pesquisa todos os usuários na collection 'users'
+
+	// caso tu queira em outra collection, é só usar a mesma sintaxe:
+
+	db.nome_da_collection.find()
+
+///
+
+O mongo possui um campo oculto do id - ele é representado como _id - 
+Esse campo é relacionado para cada dado dentro de uma collection. Exemplo:
+
+	No seu banco de dados 'users' tu possui uma collection que guarda as informações
+	dos usuários. Ela possui dois usuários, um é o Cléber e o outro é Joelson. Tu não
+	irá precisar criar um id automático para eles, o próprio mongo irá criar. 
+	Isso facilita pois tu conseguirá chegar naquele usuário sem nem mesmo precisar saber
+	o nome dele, ou até mesmo outras informações, é só tu chegar com o id. 
+
+	Nota: esse id é diferente para cada usuário.
+
